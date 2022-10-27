@@ -4,7 +4,7 @@ from pyexpat import model
 from statistics import mode
 from rest_framework import serializers
 
-from .models import Category, Product
+from .models import Category, Lista, Product
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,4 +29,25 @@ class CategorySerializer(serializers.ModelSerializer):
             "name",
             "get_absolute_url",
             "products",
+        )
+
+class ListaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lista
+        fields = (
+            "id",
+             "nome",
+             "descricao",
+             "product",
+        )
+
+class MercadoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lista
+        fields = (
+            "id",
+             "nome",
+             "rua",
+             "bairro",
+             "cidade",
         )
